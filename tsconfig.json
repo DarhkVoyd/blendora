@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"outDir": "./lib",
+		"declaration": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"lib": ["esnext", "dom"],
+		"module": "ES6",
+		"target": "ES6",
+		"allowJs": false,
+		"moduleResolution": "node",
+		"noEmitOnError": true
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "**/__tests__/*"]
+}
