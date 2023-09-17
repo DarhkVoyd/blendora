@@ -1,7 +1,7 @@
 {
-  "name": "easyfront",
+  "name": "blendora",
   "version": "1.0.0",
-  "description": "EasyFront is a versatile TypeScript library simplifying DOM manipulation and enhancing browser API interaction for efficient front-end development, ideal for browser extension creators and web developers.",
+  "description": "Blendora: Seamlessly integrate custom components into popular web apps. Simplify DOM manipulation and enhance API interaction for a cohesive user experience. Ideal for extensions and web devs.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -13,26 +13,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DarhkVoyd/easyfront.git"
+    "url": "git+https://github.com/DarhkVoyd/blendora.git"
   },
   "keywords": [
-    "frontend",
-    "browser",
-    "DOM manipulation",
-    "JavaScript",
-    "TypeScript",
     "web development",
-    "front-end",
-    "framework",
-    "library",
     "browser extension",
-    "web app"
+    "front-end",
+    "DOM manipulation",
+    "browser API",
+    "custom components",
+    "seamless integration",
+    "web applications",
+    "TypeScript",
+    "UI design",
+    "user experience",
+    "web development toolkit"
   ],
   "author": "DV @darhkvoyd",
   "bugs": {
-    "url": "https://github.com/DarhkVoyd/easyfront/issues"
+    "url": "https://github.com/DarhkVoyd/blendora/issues"
   },
-  "homepage": "https://github.com/DarhkVoyd/easyfront#readme",
+  "homepage": "https://github.com/DarhkVoyd/blendora#readme",
   "devDependencies": {
     "@types/jest": "^29.5.4",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
