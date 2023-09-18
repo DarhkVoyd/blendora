@@ -1,6 +1,6 @@
 {
   "name": "blendora",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Blendora: Seamlessly integrate custom components into popular web apps. Simplify DOM manipulation and enhance API interaction for a cohesive user experience. Ideal for extensions and web devs.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
