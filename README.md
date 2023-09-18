@@ -124,90 +124,160 @@ This function toggles the Picture-in-Picture mode for the primary video element.
 Example usage:
 
 ```javascript
-import { togglePictureInPictureMode } from 'blendora';
+import togglePictureInPictureMode from 'blendora';
 
 await togglePictureInPictureMode();
 ```
 
-### HTMLVideoElement Extension
+### VideoPlayer Class
 
-Blendora extends the HTMLVideoElement prototype with additional methods for enhanced video control.
+The `VideoPlayer` class provides a set of methods to manipulate HTML video elements, allowing you to control playback speed, current time, and seek through video content.
+
+#### `constructor(videoElement: HTMLVideoElement)`
+
+- `videoElement`: The HTMLVideoElement associated with the player.
+
+**Example usage:**
+
+```javascript
+import VideoPlayer from 'blendora';
+
+const videoElement = document.getElementById('myVideo');
+const videoPlayer = new VideoPlayer(videoElement);
+```
 
 #### `getPlaybackSpeed(): number`
 
-This method retrieves the current playback speed of the HTMLVideoElement.
+This method retrieves the current playback speed of the video.
 
-Example usage:
+**Returns:**
+
+- `number`: The current playback speed.
+
+**Example usage:**
 
 ```javascript
-const videoElement = document.getElementById('myVideo');
-const playbackSpeed = videoElement.getPlaybackSpeed();
-console.log(`Playback speed: ${playbackSpeed}`);
+const playbackSpeed = videoPlayer.getPlaybackSpeed();
+console.log(`Current Playback Speed: ${playbackSpeed}`);
 ```
 
 #### `setPlaybackSpeed(speed: number): { status: 'SUCCESS' | 'ERROR', response: string }`
 
-This method sets the playback speed of the HTMLVideoElement.
+This method sets the playback speed of the video.
 
-- `speed`: The desired playback speed value.
+- `speed`: The desired playback speed.
 
-Example usage:
+**Returns:**
+
+- `{ status: 'SUCCESS' | 'ERROR', response: string }`: An object indicating the status of the operation. If successful, it returns 'SUCCESS' and a response message. If the speed value is invalid, it returns 'ERROR' and an error message.
+
+**Example usage:**
 
 ```javascript
-const videoElement = document.getElementById('myVideo');
-const result = videoElement.setPlaybackSpeed(1.5);
-console.log(result);
+const result = videoPlayer.setPlaybackSpeed(2.0);
+if (result.status === 'SUCCESS') {
+  console.log(result.response);
+} else {
+  console.error(result.response);
+}
 ```
 
 #### `getCurrentTime(): number`
 
-This method retrieves the current playback time of the HTMLVideoElement.
+This method retrieves the current playback time of the video in seconds.
 
-Example usage:
+**Returns:**
+
+- `number`: The current playback time in seconds.
+
+**Example usage:**
 
 ```javascript
-const videoElement = document.getElementById('myVideo');
-const currentTime = videoElement.getCurrentTime();
-console.log(`Current time: ${currentTime} seconds`);
+const currentTime = videoPlayer.getCurrentTime();
+console.log(`Current Time: ${currentTime} seconds`);
 ```
 
 #### `setCurrentTime(seconds: number): { status: 'SUCCESS' | 'ERROR', response: string }`
 
-This method sets the current playback time of the HTMLVideoElement.
+This method sets the current playback time of the video to the specified time in seconds.
 
 - `seconds`: The desired playback time in seconds.
 
-Example usage:
+**Returns:**
+
+- `{ status: 'SUCCESS' | 'ERROR', response: string }`: An object indicating the status of the operation. If successful, it returns 'SUCCESS' and a response message. If the time value is invalid, it returns 'ERROR' and an error message.
+
+**Example usage:**
 
 ```javascript
-const videoElement = document.getElementById('myVideo');
-videoElement.setCurrentTime(60);
+const result = videoPlayer.setCurrentTime(30);
+if (result.status === 'SUCCESS') {
+  console.log(result.response);
+} else {
+  console.error(result.response);
+}
 ```
 
 #### `getDuration(): number`
 
-This method retrieves the duration of the HTML video.
+This method retrieves the total duration of the video in seconds.
 
-Example usage:
+**Returns:**
+
+- `number`: The total duration of the video in seconds.
+
+**Example usage:**
 
 ```javascript
-const videoElement = document.getElementById('myVideo');
-const duration = videoElement.getDuration();
-console.log(`Video duration: ${duration} seconds`);
+const duration = videoPlayer.getDuration();
+console.log(`Video Duration: ${duration} seconds`);
 ```
 
 #### `seekCurrentTime(direction: 'forward' | 'backward', seconds: number): { status: 'SUCCESS' | 'ERROR', response: string }`
 
-This method seeks the current playback time of the HTMLVideoElement by a specified amount.
+This method seeks the current playback time of the video in the specified direction (forward or backward) by the specified number of seconds.
 
-- `direction`: The direction to seek, either `'forward'` or `'backward'`.
-- `seconds`: The amount of time to seek in seconds.
+- `direction`: The direction to seek, either 'forward' or 'backward'.
+- `seconds`: The number of seconds to seek.
+
+**Returns:**
+
+- `{ status: 'SUCCESS' | 'ERROR', response: string }`: An object indicating the status of the operation. If successful, it returns 'SUCCESS' and a response message. If the direction or time value is invalid, it returns 'ERROR' and an error message.
+
+**Example usage:**
+
+```javascript
+const result = videoPlayer.seekCurrentTime('forward', 10);
+if (result.status === 'SUCCESS') {
+  console.log(result.response);
+} else {
+  console.error(result.response);
+}
+
+### YouTube Player (YTPlayer)
+
+Blendora offers a YTPlayer class that extends the VideoPlayer class and is specialized for YouTube video manipulation.
+
+#### `YTPlayer(videoElement: HTMLVideoElement, data: YTPlayerData)`
+
+This class extends the VideoPlayer and allows you to work with YouTube-specific video player features.
+
+- `videoElement`: The HTMLVideoElement associated with the player.
+- `data`: An object containing YouTube-specific data, such as `videoID`.
 
 Example usage:
 
 ```javascript
+import YTPlayer from 'blendora';
+
 const videoElement = document.getElementById('myVideo');
-videoElement.seekCurrentTime('forward', 10);
+const data = {
+  videoID: 'youtube-video-id',
+};
+
+const youtubePlayer = new YTPlayer(videoElement, data);
+
+console.log(`Video ID: ${youtubePlayer.videoID}`);
 ```
 
 ## License
